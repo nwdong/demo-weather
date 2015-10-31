@@ -14,9 +14,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import test.weather.TestConstants;
+import test.weather.WeatherApplication;
 import test.weather.common.Constants;
-
-import com.example.WeatherApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { WeatherApplication.class })
@@ -30,7 +29,7 @@ public class CurrentWeatherControllerTest {
 	}
 
 	@Test
-	public void testGetAccounts() throws Exception {
+	public void testGetCurrentWeather() throws Exception {
 
 		// 2 is the id of Melbourne, 1 for Sydney and 3 for Wollongong
 		mvc.perform(get(Constants.CURRENT_WEATHER_URI_ROOT + "/2"))
