@@ -8,10 +8,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 import test.weather.TestConstants;
 import test.weather.WeatherApplication;
@@ -21,11 +24,15 @@ import test.weather.common.Constants;
 @ContextConfiguration(classes = { WeatherApplication.class })
 @WebAppConfiguration
 public class CurrentWeatherControllerTest {
-
+	
 	private MockMvc mvc;
+
+	@Autowired
+	private WebApplicationContext context;
 
 	@Before
 	public void setUp() throws Exception {
+		mvc = MockMvcBuilders.webAppContextSetup(context).build();
 	}
 
 	@Test
@@ -36,7 +43,7 @@ public class CurrentWeatherControllerTest {
 				.andExpect(status().isOk())
 				.andExpect(
 						content().contentType(TestConstants.CONTENT_TYPE_JSON))
-				.andExpect(jsonPath("city").value("Melbourne"))
+				.andExpect(jsonPath("name").value("Melbourne"))
 				.andExpect(jsonPath("time").exists())
 				.andExpect(jsonPath("weather").exists())
 				.andExpect(jsonPath("temperature").exists())
