@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import test.weather.common.CurrentWeatherDto;
 
 @Component
-public class CurrentWeatherServiceImpl implements CurrentWeatherService {
+public class CurrentWeatherServiceOpenWeatherImpl implements CurrentWeatherService {
 
 	@Override
 	public CurrentWeatherDto getCurrentWeather(Long cityId) {

@@ -2,6 +2,6 @@ package test.weather.domain;
 
 public interface OpenWeatherRepository {
 	
-	OpenWeatherDataJson getWeather(long openWeatherCityId);
+	OpenWeatherDataJson getWeather(Long openWeatherCityId);
 
 }
