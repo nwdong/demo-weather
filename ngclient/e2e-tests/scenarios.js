@@ -6,20 +6,30 @@ describe('my app', function() {
 
 	describe('current weather view', function() {
 
-		var cityName = element(by.id('cityName'));
+		var city = element(by.id('cityOption'));
 
 		beforeEach(function() {
 			browser.get('index.html');
 		});
 
-		it('should read weather information of Melbourne', function() {
-
-			element(by.id('cityList')).then(function(options) {
-				options[1].click();
-			});
-
-			expect(cityName).getText().toEqual('Melbourne');
+		it('should have city list', function() {
+			
+			var allOptions = element.all(by.options('option.name for option in cities track by option.id'));
+			expect(allOptions.count()).toBeGreaterThan(3);
 		});
+		
+		it('should have current weather information', function() {
+			
+			var options = element.all(by.css('select[ng-model="selectedCity"] option'));
+			
+			options.get(2).click();
+			
+			expect(element(by.id("temperature")).getText()).toContain('C');
+			
+			expect(element(by.id("wind")).getText()).toContain('km');
+			
+		});
+
 
 	});
 

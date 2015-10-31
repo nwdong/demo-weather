@@ -28,6 +28,7 @@
 <script src="components/version/interpolate-filter.js"></script>
 <!-- added for myApp -->
 <script src="app.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
 </head>
 <body>
 	<div ng-controller='myAppCtrl'>
@@ -37,23 +38,24 @@
 			<table border="1">
 				<tr>
 					<td>City</td>
-					<td>Smith</td>
+					<td><select ng-model="selectedCity"
+						ng-options="option.name for option in cities track by option.id" ng-change="getCurrentWeather(selectedCity)"></select></td>
 				</tr>
 				<tr>
 					<td>Updated time</td>
-					<td></td>
+					<td id="time">{{currentWeather.time}}</td>
 				</tr>
 				<tr>
 					<td>Weather</td>
-					<td></td>
+					<td id="weather">{{currentWeather.weather}}</td>
 				</tr>
 				<tr>
 					<td>Temperature</td>
-					<td></td>
+					<td id="temperature">{{currentWeather.temperature}}</td>
 				</tr>
 				<tr>
 					<td>Wind</td>
-					<td></td>
+					<td id="wind">{{currentWeather.wind}}</td>
 				</tr>
 			</table>
 		</div>
