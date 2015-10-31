@@ -2,6 +2,12 @@ package test.weather.common;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * it's used to support RESTful API to return current weather informatin in JSON format 
+ * 
+ * @author William Dong
+ *
+ */
 public class CurrentWeatherDto {
 	
 	private String name;

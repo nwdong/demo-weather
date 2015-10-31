@@ -9,6 +9,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import test.weather.common.Constants;
+import test.weather.domain.openweather.OpenWeatherCityMap;
 
 @Entity
 @Table(name="cities")
@@ -20,6 +21,7 @@ public class City {
 	private Long id;
 
 	// city name
+	// it's city name in English but can be used as I18N message key later if required
 	@Column(name="name", nullable=false, length=Constants.CITY_NAME_LENGTH_MAX)
 	private String name;
 	

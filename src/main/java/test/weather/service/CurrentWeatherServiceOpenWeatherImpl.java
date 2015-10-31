@@ -9,17 +9,20 @@ import java.util.Locale;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import test.weather.common.CurrentWeatherDto;
 import test.weather.domain.City;
 import test.weather.domain.CityRepository;
-import test.weather.domain.OpenWeatherDataJson;
-import test.weather.domain.OpenWeatherDataWeatherJson;
-import test.weather.domain.OpenWeatherRepository;
+import test.weather.domain.openweather.OpenWeatherDataJson;
+import test.weather.domain.openweather.OpenWeatherDataWeatherJson;
+import test.weather.domain.openweather.OpenWeatherRepository;
 import test.weather.common.Constants;
 
 @Component
+@PropertySource(value={"classpath:application.properties"})
 public class CurrentWeatherServiceOpenWeatherImpl implements CurrentWeatherService {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -29,6 +32,15 @@ public class CurrentWeatherServiceOpenWeatherImpl implements CurrentWeatherServi
 	
 	@Autowired
 	OpenWeatherRepository openWeatherDao;
+	
+	@Value("${openweather.temperature.unit}")
+    private String tempUnit;
+	
+	@Value("${openweather.wind.unit}")
+    private String windUnit;
+	
+	@Value("${time.format}")
+    private String timeFormat;
 
 	@Override
 	public CurrentWeatherDto getCurrentWeather(Long cityId) {
@@ -48,10 +60,10 @@ public class CurrentWeatherServiceOpenWeatherImpl implements CurrentWeatherServi
 		data.setName(city.getName());
 		
 		// set temparature
-		data.setTemperature(rawData.getMain().getTemp() + Constants.TEMPERATURE_UNIT);
+		data.setTemperature(rawData.getMain().getTemp() + tempUnit);
 		
 		// set update time
-		DateFormat formatter = new SimpleDateFormat("EEE, HH:mm a");
+		DateFormat formatter = new SimpleDateFormat(timeFormat);
 		long milliSeconds= rawData.getDt() * 1000;
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(milliSeconds);
@@ -62,7 +74,7 @@ public class CurrentWeatherServiceOpenWeatherImpl implements CurrentWeatherServi
 		data.setWeather(weatherList.get(0).getMain());
 		
 		// set wind speed
-		data.setWind(rawData.getWind().getSpeed() + Constants.WIND_SPEED_UNIT);
+		data.setWind(rawData.getWind().getSpeed() + windUnit);
 		
 		log.debug("current weather(" + data.getName() + ", " + data.getTime() + ", " + data.getWeather() + ", " + data.getTemperature() + ", " + data.getWind());
 		

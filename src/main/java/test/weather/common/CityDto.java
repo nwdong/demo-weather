@@ -1,5 +1,11 @@
 package test.weather.common;
 
+/**
+ * it's used to support RESTful API to return city informatin in JSON format 
+ * 
+ * @author William Dong
+ *
+ */
 public class CityDto {
 
 	private Long id;

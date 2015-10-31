@@ -1,4 +1,4 @@
-package test.weather.domain;
+package test.weather.domain.openweather;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import test.weather.domain.City;
+
+/**
+ * 
+ * it keeps the mapping of city id to city id used by OpenWeather
+ * 
+ * e.g. 
+ * 		Sydney's city id is defined as 1 in this system, but it's 6619279 for api.openweathermap.org  
+ * 
+ * @author William Dong
+ *
+ */
 @Entity
 @Table(name="open_weather_cities")
 public class OpenWeatherCityMap {

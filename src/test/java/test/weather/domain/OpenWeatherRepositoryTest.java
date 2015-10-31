@@ -11,6 +11,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 
 import test.weather.TestConstants;
 import test.weather.WeatherApplication;
+import test.weather.domain.openweather.OpenWeatherDataJson;
+import test.weather.domain.openweather.OpenWeatherRepository;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = { WeatherApplication.class })

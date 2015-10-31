@@ -29,7 +29,7 @@ public class CityServiceImpl implements CityService {
 			
 			cityDto.setId(city.getId());
 			
-			// I18N can be introduced here
+			// I18N of city name can be introduced here
 			cityDto.setName(city.getName());
 			
 			result.add(cityDto);

@@ -1,9 +1,15 @@
-package test.weather.domain;
+package test.weather.domain.openweather;
 
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+/**
+ * Json class used to parse data from api.openweathermap.org
+ * 
+ * @author William Dong
+ *
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OpenWeatherDataJson {
 

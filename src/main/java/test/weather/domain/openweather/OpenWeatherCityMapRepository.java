@@ -1,4 +1,4 @@
-package test.weather.domain;
+package test.weather.domain.openweather;
 
 import org.springframework.data.repository.CrudRepository;
 

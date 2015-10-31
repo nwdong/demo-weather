@@ -11,6 +11,12 @@ import test.weather.common.CityDto;
 import test.weather.common.Constants;
 import test.weather.service.CityService;
 
+/**
+ * RESTful API controller for city information
+ * 
+ * @author William Dong
+ *
+ */
 @RestController
 public class CityController {
 	

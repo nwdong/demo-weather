@@ -10,7 +10,12 @@ import test.weather.common.Constants;
 import test.weather.common.CurrentWeatherDto;
 import test.weather.service.CurrentWeatherService;
 
-
+/**
+ * RESTful API controller for current weather
+ * 
+ * @author William Dong
+ *
+ */
 @RestController
 public class CurrentWeatherController {
 	
