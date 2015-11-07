@@ -1,6 +1,8 @@
+.mvn
 .settings
 .classpath
 .project
-.mvn
+mvnw
+mvnw.cmd
 target
 src/main/resources/public
