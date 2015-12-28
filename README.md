@@ -10,3 +10,6 @@ Please refer to "doc/design.docx" for details
 
 # user guide and demo snapshots
 Please refer to "doc/user guide.docx" for details 
+
+# live demo
+http://ec2-52-24-235-154.us-west-2.compute.amazonaws.com:8080/
